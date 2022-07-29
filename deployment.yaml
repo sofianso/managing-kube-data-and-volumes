@@ -15,7 +15,18 @@ spec:
       containers:
         - name: story
         # NOTE: name of image is from your Docker repo
-          image: sofianso/kube-data-demo:1
+          image: sofianso/kube-data-demo:2
+          env:
+            - name: STORY_FOLDER
+              # value: 'story'
+              # you can use valueFrom to extract the value from environment.yaml 
+              # or use the value from as the line above if you don't plan to use env variables
+              valueFrom: 
+                configMapKeyRef:
+                # name is taken from environmen.yaml
+                name: data-store-env
+                key: folder
+              # value: 'story'
           volumeMounts:
           # story is the file path is from app.js
             - mountPath: /app/story
