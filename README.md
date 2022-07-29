@@ -6,3 +6,6 @@ To learn how volumes are integrated with Kubernetes environment.
 
 ## To Run The Service
 `minikube service story-service`
+
+## Understanding The State
+![My Image](images/understanding-state.png)

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+  name: host-pv
+spec:
+  # capacity determines how much capacity can be used in our cluster
+  capacity: 
+    storage: 1Gi
+  # volumeMode can be block or Filesystem
+  # https://www.computerweekly.com/feature/Storage-pros-and-cons-Block-vs-file-vs-object-storage
+  accessModes:
+  # ReadWriteOnce means that it can be claimed multiple pods
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  # You get the name from listing storage cube
+  storageClassname: standard
+  hostPath: 
+    path: /data
+    type: DirectoryOrCreate
