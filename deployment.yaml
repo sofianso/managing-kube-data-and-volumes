@@ -24,4 +24,7 @@ spec:
       volumes:
         - name: story-volume
           # emptyDir creates an empty new directory and keeps the directory alive as long as the pod is alive
-          emptyDir: {}
+          # hostPath is useful if you want one pod to be independent from the other pods or if you want to share data in existing container
+          hostPath: 
+            path: /data
+            type: DirectoryOrCreate
