@@ -15,4 +15,13 @@ spec:
       containers:
         - name: story
         # NOTE: name of image is from your Docker repo
-          image: sofianso/kube-data-demo
+          image: sofianso/kube-data-demo:1
+          volumeMounts:
+          # story is the file path is from app.js
+            - mountPath: /app/story
+            # the name mounts the volumes below
+              name: story-volume
+      volumes:
+        - name: story-volume
+          # emptyDir creates an empty new directory and keeps the directory alive as long as the pod is alive
+          emptyDir: {}
